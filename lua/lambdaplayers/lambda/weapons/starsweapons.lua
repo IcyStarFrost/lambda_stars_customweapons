@@ -289,13 +289,14 @@ table.Merge( _LAMBDAPLAYERSWEAPONS, {
 
 local bazingatbl = {
     "lambdaplayers/vin.mp3",
-    "lambdaplayers/Bazinga!.mp3"
+    "lambdaplayers/Bazinga!.mp3",
+    "lambdaplayers/spotpills01.wav"
 }
 
 local function bazinga( lambda, wepent )
     local tbl = table.Add( GetLambdaPlayers(), player.GetAll() )
     for k, v in RandomPairs( tbl ) do
-        if !IsValid( v ) or v == lambda then continue end
+        if !IsValid( v ) or v == lambda or v.IsLambdaPlayer and v:GetIsDead() then continue end
         local nav = navmesh.GetNavArea( v:GetPos(), 100 )
         if !nav then continue end
 
